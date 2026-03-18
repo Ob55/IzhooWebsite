@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AERT – Africa Ecological Restoration Trust</title>
+<meta name="description" content="Africa Ecological Restoration Trust — restoring and conserving Africa's ecosystems for future generations.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1B3A2D;
+    --earth: #2C5530;
+    --amber: #C8651A;
+    --amber-light: #E07A2A;
+    --sand: #F5EDD8;
+    --bark: #6B4F3A;
+    --sky: #D4E9DB;
+    --white: #FAFAF8;
+    --charcoal: #1A1A18;
+    --mid: #4A6358;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5vw;
+    height: 72px;
+    background: rgba(27,58,45,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(200,101,26,0.2);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px; text-decoration: none;
+  }
+  .logo-icon {
+    width: 42px; height: 42px; border-radius: 8px; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr;
+  }
+  .logo-icon .arid { background: #C8941A; }
+  .logo-icon .lush { background: #2C8C4C; }
+  .logo-text { color: var(--white); }
+  .logo-text strong { font-family: 'Playfair Display', serif; font-size: 18px; display: block; line-height: 1; }
+  .logo-text span { font-size: 10px; letter-spacing: 2px; opacity: 0.7; text-transform: uppercase; }
+
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px;
+    font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+    height: 1px; background: var(--amber); transform: scaleX(0);
+    transition: transform 0.25s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--amber); color: white; border: none; padding: 10px 22px;
+    border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--amber-light); transform: translateY(-1px); }
+
+  /* ── SECTIONS / PAGES ── */
+  .page { display: none; padding-top: 72px; }
+  .page.active { display: block; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    background: var(--forest);
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg,
+      #0D2218 0%, #1B3A2D 30%, #2C5530 55%, #1B4A35 75%, #0A1F14 100%);
+  }
+  /* organic texture */
+  .hero-bg::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 80% 30%, rgba(44,140,76,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 60% at 20% 70%, rgba(200,101,26,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 80% at 50% 50%, rgba(27,58,45,0.3) 0%, transparent 70%);
+  }
+  /* split line motif */
+  .hero-split {
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 1px; background: linear-gradient(to bottom, transparent, rgba(200,101,26,0.4), transparent);
+    animation: splitPulse 4s ease-in-out infinite;
+  }
+  @keyframes splitPulse { 0%,100%{opacity:0.3} 50%{opacity:0.8} }
+
+  /* floating particles */
+  .particle {
+    position: absolute; border-radius: 50%;
+    background: rgba(44,140,76,0.15);
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
+  }
+
+  .hero-inner {
+    position: relative; z-index: 2;
+    width: 100%; max-width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: calc(100vh - 72px);
+  }
+  .hero-left {
+    padding: 80px 6vw 80px 10vw;
+    display: flex; flex-direction: column; justify-content: center;
+    animation: slideRight 1s cubic-bezier(0.16,1,0.3,1) forwards;
+    opacity: 0; transform: translateX(-40px);
+  }
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 10vw 80px 6vw;
+    animation: slideLeft 1s 0.3s cubic-bezier(0.16,1,0.3,1) forwards;
+    opacity: 0; transform: translateX(40px);
+  }
+  @keyframes slideRight { to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideLeft { to { opacity: 1; transform: translateX(0); } }
+
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content:''; width:32px; height:1px; background:var(--amber); }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 900; line-height: 1.05;
+    color: var(--white); margin-bottom: 28px;
+  }
+  .hero-title em { color: var(--amber); font-style: normal; }
+
+  .hero-tagline {
+    font-size: clamp(15px, 1.8vw, 18px); line-height: 1.7;
+    color: rgba(255,255,255,0.7); max-width: 480px; margin-bottom: 48px;
+  }
+
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--amber); color: white; padding: 16px 32px;
+    border-radius: 8px; font-size: 15px; font-weight: 600;
+    text-decoration: none; transition: all 0.25s; border: none; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--amber-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(200,101,26,0.35); }
+  .btn-outline {
+    background: transparent; color: var(--white); padding: 16px 32px;
+    border-radius: 8px; font-size: 15px; font-weight: 500;
+    text-decoration: none; border: 1.5px solid rgba(255,255,255,0.3);
+    transition: all 0.25s; cursor: pointer;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.05); }
+
+  /* visual card right side */
+  .hero-visual {
+    width: 100%; max-width: 480px;
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .visual-top {
+    height: 220px;
+    background: linear-gradient(135deg, #8B6914 0%, #C8941A 40%, #A0521A 100%);
+    display: flex; align-items: flex-end; padding: 20px;
+    position: relative; overflow: hidden;
+  }
+  .visual-top::before {
+    content: 'ARID LAND';
+    position: absolute; top: 20px; left: 20px;
+    font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.6);
+    font-weight: 600;
+  }
+  /* cracked earth pattern */
+  .visual-top::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(0,0,0,0.05) 30px, rgba(0,0,0,0.05) 31px),
+      repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(0,0,0,0.05) 30px, rgba(0,0,0,0.05) 31px);
+  }
+  .visual-label-before {
+    font-size: 12px; color: rgba(255,255,255,0.8); font-weight: 500;
+    background: rgba(0,0,0,0.25); padding: 4px 12px; border-radius: 4px;
+    position: relative; z-index: 1;
+  }
+  .visual-bottom {
+    height: 220px;
+    background: linear-gradient(135deg, #1B5E35 0%, #2C8C4C 50%, #145228 100%);
+    display: flex; align-items: flex-end; padding: 20px;
+    position: relative; overflow: hidden;
+  }
+  .visual-bottom::before {
+    content: 'RESTORED';
+    position: absolute; top: 20px; left: 20px;
+    font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.7);
+    font-weight: 600;
+  }
+  /* leaf-like pattern */
+  .visual-bottom::after {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(44,200,76,0.2) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(44,200,76,0.15) 0%, transparent 40%);
+  }
+  .visual-label-after {
+    font-size: 12px; color: rgba(255,255,255,0.9); font-weight: 500;
+    background: rgba(44,140,76,0.4); padding: 4px 12px; border-radius: 4px;
+    position: relative; z-index: 1;
+  }
+  .visual-divider {
+    height: 4px;
+    background: linear-gradient(to right, var(--amber), var(--earth));
+  }
+
+  /* stats bar */
+  .hero-stats {
+    position: relative; z-index: 2;
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: grid; grid-template-columns: repeat(4,1fr);
+  }
+  .stat-item {
+    padding: 32px; text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .stat-item:nth-child(1){animation-delay:0.5s}
+  .stat-item:nth-child(2){animation-delay:0.65s}
+  .stat-item:nth-child(3){animation-delay:0.8s}
+  .stat-item:nth-child(4){animation-delay:0.95s}
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+  .stat-item:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display',serif; font-size: 36px; font-weight: 900; color: var(--amber); display: block; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.55); letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+  /* ── HIGHLIGHTS STRIP ── */
+  .highlights {
+    background: var(--forest);
+    padding: 0 5vw 80px;
+  }
+  .highlights-grid {
+    display: grid; grid-template-columns: repeat(4,1fr); gap: 24px;
+  }
+  .highlight-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 16px; padding: 40px 32px;
+    transition: all 0.3s;
+    animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .highlight-card:hover {
+    background: rgba(200,101,26,0.08);
+    border-color: rgba(200,101,26,0.3);
+    transform: translateY(-4px);
+  }
+  .highlight-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(200,101,26,0.15); display: flex; align-items: center;
+    justify-content: center; font-size: 22px; margin-bottom: 20px;
+  }
+  .highlight-card h3 { font-family:'Playfair Display',serif; font-size:22px; color:var(--white); margin-bottom:12px; }
+  .highlight-card p { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.6); }
+
+  /* ── WHO WE ARE STRIP ── */
+  .who-strip {
+    background: var(--sand);
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+  .who-left {
+    padding: 80px 8vw 80px 10vw;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .section-tag {
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 44px); font-weight: 900;
+    color: var(--forest); line-height: 1.15; margin-bottom: 20px;
+  }
+  .section-body { font-size: 16px; line-height: 1.8; color: var(--bark); margin-bottom: 32px; }
+  .who-right {
+    background: var(--forest);
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px;
+    position: relative; overflow: hidden;
+  }
+  .who-right::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center, rgba(44,140,76,0.2) 0%, transparent 70%);
+  }
+  .who-quote {
+    position: relative; z-index: 1;
+    font-family: 'Playfair Display',serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    color: var(--white); line-height: 1.5; text-align: center;
+    font-style: italic;
+  }
+  .who-quote::before {
+    content: '"'; font-size: 80px; color: rgba(200,101,26,0.3);
+    display: block; line-height: 0.5; margin-bottom: 20px;
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner {
+    background: var(--amber);
+    padding: 60px 10vw;
+    display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  }
+  .cta-text h2 { font-family:'Playfair Display',serif; font-size:32px; color:white; }
+  .cta-text p { color: rgba(255,255,255,0.85); font-size:16px; margin-top:8px; }
+  .btn-white {
+    background: white; color: var(--amber); padding: 16px 36px;
+    border-radius: 8px; font-size: 15px; font-weight: 700;
+    text-decoration: none; transition: all 0.25s; white-space: nowrap;
+    cursor: pointer; border: none;
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    padding: 60px 10vw 32px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+  .footer-brand h3 { font-family:'Playfair Display',serif; font-size:22px; color:white; margin-bottom:12px; }
+  .footer-brand p { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.5); }
+  .footer-col h4 { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--amber); margin-bottom:20px; }
+  .footer-col a { display:block; color:rgba(255,255,255,0.5); text-decoration:none; font-size:14px; margin-bottom:10px; transition:color 0.2s; }
+  .footer-col a:hover { color:white; }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.06); padding-top:24px; display:flex; justify-content:space-between; align-items:center; }
+  .footer-bottom p { font-size:13px; color:rgba(255,255,255,0.35); }
+
+  /* ── ABOUT PAGE ── */
+  .page-hero {
+    background: var(--forest);
+    padding: 100px 10vw 80px;
+    position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content:'';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 90% at 80% 50%, rgba(44,140,76,0.2) 0%, transparent 60%);
+  }
+  .page-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .page-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(36px,5vw,64px); color:white; margin-bottom:20px; }
+  .page-hero p { font-size:18px; color:rgba(255,255,255,0.7); line-height:1.7; }
+
+  .content-section {
+    padding: 80px 10vw;
+  }
+  .content-section.alt { background: var(--sand); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+
+  .value-card {
+    border-left: 3px solid var(--amber);
+    padding: 24px 24px 24px 32px;
+    background: white;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .value-card:hover { transform: translateX(4px); box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
+  .value-card h3 { font-family:'Playfair Display',serif; font-size:18px; color:var(--forest); margin-bottom:8px; }
+  .value-card p { font-size:14px; color:var(--bark); line-height:1.6; }
+
+  .focus-card {
+    background: var(--forest); border-radius: 16px; padding: 40px;
+    color: white; transition: transform 0.25s;
+  }
+  .focus-card:hover { transform: translateY(-4px); }
+  .focus-icon { font-size: 36px; margin-bottom: 20px; }
+  .focus-card h3 { font-family:'Playfair Display',serif; font-size:22px; margin-bottom:12px; }
+  .focus-card p { font-size:14px; line-height:1.7; opacity:0.7; }
+
+  /* ── TEAM PAGE ── */
+  .team-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 32px;
+    padding: 60px 10vw;
+  }
+  .team-card {
+    background: white; border-radius: 20px; overflow: hidden;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) both;
+  }
+  .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(0,0,0,0.12); }
+  .team-photo {
+    height: 200px; background: var(--sky);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 56px; position: relative; overflow: hidden;
+  }
+  .team-photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(27,58,45,0.08));
+  }
+  .team-info { padding: 28px 28px 32px; }
+  .team-info h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--forest); margin-bottom:4px; }
+  .team-role { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:14px; display:block; }
+  .team-bio { font-size:14px; line-height:1.7; color:var(--bark); }
+
+  /* ── CONTACT PAGE ── */
+  .contact-layout {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: 600px;
+  }
+  .contact-left {
+    background: var(--forest); padding: 80px 8vw 80px 10vw;
+    color: white;
+  }
+  .contact-left h2 { font-family:'Playfair Display',serif; font-size:36px; margin-bottom:16px; }
+  .contact-left p { opacity:0.7; line-height:1.7; margin-bottom:48px; font-size:16px; }
+  .contact-detail { display:flex; gap:16px; align-items:flex-start; margin-bottom:28px; }
+  .contact-icon { width:44px; height:44px; border-radius:10px; background:rgba(200,101,26,0.2); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .contact-detail-info h4 { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--amber); margin-bottom:4px; }
+  .contact-detail-info p { font-size:15px; opacity:0.8; }
+
+  .contact-right { padding: 80px 10vw 80px 8vw; background: var(--white); }
+  .contact-right h2 { font-family:'Playfair Display',serif; font-size:28px; color:var(--forest); margin-bottom:8px; }
+  .form-sub { font-size:14px; color:var(--bark); margin-bottom:36px; }
+
+  .form-group { margin-bottom: 24px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  label { display:block; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; font-weight:600; color:var(--mid); margin-bottom:8px; }
+  input, select, textarea {
+    width:100%; padding:14px 16px; border:1.5px solid #E0E0DC;
+    border-radius:8px; font-size:15px; font-family:'DM Sans',sans-serif;
+    background: white; color:var(--charcoal); transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(200,101,26,0.1);
+  }
+  textarea { resize:vertical; min-height:140px; }
+
+  .btn-submit {
+    background: var(--amber); color:white; border:none;
+    padding: 16px 40px; border-radius:8px; font-size:16px; font-weight:600;
+    cursor:pointer; font-family:'DM Sans',sans-serif;
+    transition: all 0.25s; width:100%;
+  }
+  .btn-submit:hover { background:var(--amber-light); transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,101,26,0.3); }
+
+  .success-msg {
+    display:none; background:rgba(44,140,76,0.08);
+    border:1px solid rgba(44,140,76,0.3); color:var(--earth);
+    padding:16px; border-radius:8px; font-size:14px; margin-bottom:20px;
+  }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left { opacity:0; transform:translateX(-30px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-left.visible { opacity:1; transform:translateX(0); }
+  .reveal-right { opacity:0; transform:translateX(30px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+  .reveal-right.visible { opacity:1; transform:translateX(0); }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-right { display:none; }
+    .hero-left { padding: 60px 8vw; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .highlights-grid { grid-template-columns: 1fr 1fr; }
+    .who-strip { grid-template-columns: 1fr; }
+    .who-right { min-height: 300px; }
+    .two-col { grid-template-columns: 1fr; gap:40px; }
+    .three-col { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; padding: 40px 5vw; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .cta-banner { flex-direction: column; text-align:center; padding: 60px 8vw; }
+    .nav-links { display:none; }
+  }
+  @media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <div class="logo-icon">
+      <div class="arid"></div>
+      <div class="lush"></div>
+    </div>
+    <div class="logo-text">
+      <strong>AERT</strong>
+      <span>Ecological Trust</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" onclick="showPage('home')">Home</a></li>
+    <li><a href="#" onclick="showPage('about')">About Us</a></li>
+    <li><a href="#" onclick="showPage('team')">Our Team</a></li>
+    <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#" onclick="showPage('contact')">Get Involved</a>
+</nav>
+
+<!-- ════════════════════ HOME PAGE ════════════════════ -->
+<div id="home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-split"></div>
+
+    <!-- particles -->
+    <div class="particle" style="left:10%;width:6px;height:6px;animation-duration:12s;animation-delay:0s"></div>
+    <div class="particle" style="left:25%;width:4px;height:4px;animation-duration:9s;animation-delay:2s"></div>
+    <div class="particle" style="left:60%;width:8px;height:8px;animation-duration:15s;animation-delay:4s"></div>
+    <div class="particle" style="left:80%;width:5px;height:5px;animation-duration:11s;animation-delay:1s"></div>
+    <div class="particle" style="left:45%;width:3px;height:3px;animation-duration:8s;animation-delay:6s"></div>
+    <div class="particle" style="left:90%;width:6px;height:6px;animation-duration:13s;animation-delay:3s"></div>
+
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Africa Ecological Restoration Trust</div>
+        <h1 class="hero-title">
+          Restoring Africa's<br>
+          <em>Living Landscapes</em>
+        </h1>
+        <p class="hero-tagline">
+          We heal degraded ecosystems across Africa — transforming barren land into thriving, biodiverse habitats that sustain communities and wildlife for generations.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#" onclick="showPage('about')">Our Mission ↗</a>
+          <a class="btn-outline" href="#" onclick="showPage('contact')">Get Involved</a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="visual-top">
+            <span class="visual-label-before">Before — Degraded</span>
+          </div>
+          <div class="visual-divider"></div>
+          <div class="visual-bottom">
+            <span class="visual-label-after">After — Restored ✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- stats bar -->
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">12+</span>
+        <span class="stat-label">Countries Active</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">50K</span>
+        <span class="stat-label">Hectares Restored</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">200+</span>
+        <span class="stat-label">Species Protected</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">30+</span>
+        <span class="stat-label">Partner Organisations</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights">
+    <div class="highlights-grid">
+      <div class="highlight-card reveal reveal-delay-1">
+        <div class="highlight-icon">🌱</div>
+        <h3>Restore</h3>
+        <p>We rehabilitate degraded ecosystems, bringing life back to lands scarred by deforestation, drought, and overuse.</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-2">
+        <div class="highlight-icon">🛡️</div>
+        <h3>Conserve</h3>
+        <p>Our programmes protect critical habitats and the wildlife within them, working alongside local communities as stewards.</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-3">
+        <div class="highlight-icon">🔄</div>
+        <h3>Transform</h3>
+        <p>We turn environmental challenges into opportunities — creating green jobs, food security, and resilient livelihoods.</p>
+      </div>
+      <div class="highlight-card reveal reveal-delay-4">
+        <div class="highlight-icon">🤝</div>
+        <h3>Protect</h3>
+        <p>Science-based advocacy and community partnerships ensure long-term protection of Africa's most precious natural assets.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="who-strip">
+    <div class="who-left reveal-left">
+      <div class="section-tag">Who We Are</div>
+      <h2 class="section-title">A Trust Built on<br>Nature & Hope</h2>
+      <p class="section-body">
+        Africa Ecological Restoration Trust (AERT) is a non-profit NGO dedicated to ecological restoration and conservation across Africa. Founded on the belief that restored landscapes can transform lives, we work at the intersection of science, community, and nature.
+      </p>
+      <a class="btn-primary" href="#" onclick="showPage('about')">Learn More About AERT</a>
+    </div>
+    <div class="who-right reveal-right">
+      <p class="who-quote">
+        Every hectare restored is a promise kept — to the land, to the wildlife, and to the generations who will inherit it.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner reveal">
+    <div class="cta-text">
+      <h2>Ready to Make a Difference?</h2>
+      <p>Partner with us, support our work, or reach out to explore how we can collaborate.</p>
+    </div>
+    <a class="btn-white" href="#" onclick="showPage('contact')">Contact Us Today</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Africa Ecological Restoration Trust</h3>
+        <p>Dedicated to restoring and conserving Africa's ecosystems — for wildlife, communities, and future generations.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('about')">About Us</a>
+        <a href="#" onclick="showPage('team')">Our Team</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@aert.org">info@aert.org</a>
+        <a href="#">+254 700 000 000</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Africa Ecological Restoration Trust. All rights reserved.</p>
+      <p style="color:rgba(255,255,255,0.2);font-size:12px;">AERT Version 1.0</p>
+    </div>
+  </footer>
+</div>
+
+<!-- ════════════════════ ABOUT PAGE ════════════════════ -->
+<div id="about" class="page">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-tag">About Us</div>
+      <h1>Our Mission, Vision<br>& Values</h1>
+      <p>Learn about the organisation behind Africa's ecological restoration movement — our story, what we believe, and what drives us.</p>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="content-section">
+    <div class="two-col">
+      <div class="reveal-left">
+        <div class="section-tag">Our Story</div>
+        <h2 class="section-title">Founded on a Belief in Nature's Resilience</h2>
+        <p class="section-body">Africa Ecological Restoration Trust was founded to address one of the continent's most pressing challenges: the degradation of its extraordinary natural landscapes. From the Sahel to the savannas, from coastal mangroves to highland forests, Africa's ecosystems are under strain.</p>
+        <p class="section-body">AERT was established to act — bringing together scientists, conservationists, local communities, and partners to restore what has been lost and protect what remains.</p>
+      </div>
+      <div class="reveal-right">
+        <div style="background:var(--sky);border-radius:20px;padding:48px;height:100%;display:flex;flex-direction:column;gap:32px;">
+          <div>
+            <div class="section-tag">Mission</div>
+            <p style="font-family:'Playfair Display',serif;font-size:20px;color:var(--forest);line-height:1.5;">To restore degraded ecosystems across Africa through science-based, community-centred ecological restoration and conservation.</p>
+          </div>
+          <div style="border-top:1px solid rgba(27,58,45,0.15);padding-top:32px;">
+            <div class="section-tag">Vision</div>
+            <p style="font-family:'Playfair Display',serif;font-size:20px;color:var(--forest);line-height:1.5;">A Africa where thriving, biodiverse ecosystems sustain both wildlife and human communities in harmony.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="content-section alt">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;" class="reveal">
+      <div class="section-tag">Core Values</div>
+      <h2 class="section-title" style="color:var(--forest);">What We Stand For</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;" class="reveal">
+      <div class="value-card">
+        <h3>Stewardship</h3>
+        <p>We treat every landscape we work in as a sacred trust — caring for it with the long-term perspective it deserves.</p>
+      </div>
+      <div class="value-card">
+        <h3>Community</h3>
+        <p>Local communities are not beneficiaries but partners. Their knowledge, leadership, and ownership are central to everything we do.</p>
+      </div>
+      <div class="value-card">
+        <h3>Science-Based</h3>
+        <p>Every restoration programme is grounded in ecological science, ensuring our interventions are effective, measurable, and lasting.</p>
+      </div>
+      <div class="value-card">
+        <h3>Integrity</h3>
+        <p>We operate with transparency, accountability, and honesty — to our donors, partners, communities, and the ecosystems we serve.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Focus Areas -->
+  <section class="content-section">
+    <div style="text-align:center;max-width:600px;margin:0 auto 56px;" class="reveal">
+      <div class="section-tag">Focus Areas</div>
+      <h2 class="section-title">Where We Work</h2>
+    </div>
+    <div class="three-col">
+      <div class="focus-card reveal reveal-delay-1">
+        <div class="focus-icon">🌿</div>
+        <h3>Ecological Restoration</h3>
+        <p>Rehabilitating degraded land through native planting, soil restoration, and rewilding — returning ecosystems to health and function.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-2">
+        <div class="focus-icon">🦁</div>
+        <h3>Wildlife Conservation</h3>
+        <p>Protecting critical habitats and wildlife corridors, supporting biodiversity and the natural processes that sustain life.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-3">
+        <div class="focus-icon">👥</div>
+        <h3>Community Engagement</h3>
+        <p>Building green economies with local communities — creating lasting incentives for conservation through livelihoods and education.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner">
+    <div class="cta-text">
+      <h2>Meet the People Behind AERT</h2>
+      <p>Our team brings together expertise from ecology, conservation, community development, and beyond.</p>
+    </div>
+    <a class="btn-white" href="#" onclick="showPage('team')">Meet the Team</a>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>Africa Ecological Restoration Trust</h3><p>Restoring Africa's living landscapes — one ecosystem at a time.</p></div>
+      <div class="footer-col"><h4>Navigate</h4><a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('about')">About Us</a><a href="#" onclick="showPage('team')">Our Team</a><a href="#" onclick="showPage('contact')">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:info@aert.org">info@aert.org</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Africa Ecological Restoration Trust.</p></div>
+  </footer>
+</div>
+
+<!-- ════════════════════ TEAM PAGE ════════════════════ -->
+<div id="team" class="page">
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="section-tag">Our Team</div>
+      <h1>The People Restoring Africa</h1>
+      <p>A dedicated, multi-disciplinary team of ecologists, conservationists, community leaders, and advocates committed to transforming landscapes across the continent.</p>
+    </div>
+  </section>
+
+  <div style="background:var(--sand);padding:20px 10vw;">
+    <p style="font-size:13px;color:var(--bark);font-style:italic;">📸 Team photos and full bios to be supplied by AERT. Placeholder content shown below.</p>
+  </div>
+
+  <div class="team-grid">
+    <div class="team-card reveal-delay-1">
+      <div class="team-photo" style="background:linear-gradient(135deg,#D4E9DB,#A8D5B5);">🌿</div>
+      <div class="team-info">
+        <h3>Dr. Amara Nkosi</h3>
+        <span class="team-role">Executive Director</span>
+        <p class="team-bio">A conservation ecologist with over 20 years of experience across sub-Saharan Africa. Amara leads AERT's strategic vision and programme delivery, bringing deep expertise in landscape-scale restoration.</p>
+      </div>
+    </div>
+    <div class="team-card reveal-delay-2">
+      <div class="team-photo" style="background:linear-gradient(135deg,#E8D8C4,#D4B896);">🌍</div>
+      <div class="team-info">
+        <h3>Fatima Al-Hassan</h3>
+        <span class="team-role">Head of Conservation</span>
+        <p class="team-bio">Fatima specialises in biodiversity assessment and habitat protection. She oversees AERT's conservation programmes and partnerships with national parks and wildlife authorities.</p>
+      </div>
+    </div>
+    <div class="team-card reveal-delay-3">
+      <div class="team-photo" style="background:linear-gradient(135deg,#D4E9DB,#B8D4C0);">🔬</div>
+      <div class="team-info">
+        <h3>Dr. Kwame Asante</h3>
+        <span class="team-role">Lead Restoration Scientist</span>
+        <p class="team-bio">A soil ecologist and restoration specialist, Kwame designs AERT's science-based restoration methodologies. His research has informed restoration programmes across 8 African countries.</p>
+      </div>
+    </div>
+    <div class="team-card reveal-delay-1">
+      <div class="team-photo" style="background:linear-gradient(135deg,#E4D4E9,#C4A8D5);">🤝</div>
+      <div class="team-info">
+        <h3>Aisha Diallo</h3>
+        <span class="team-role">Community Engagement Manager</span>
+        <p class="team-bio">Aisha builds and sustains AERT's relationships with local communities, ensuring that restoration programmes are co-designed with the people who know the land best.</p>
+      </div>
+    </div>
+    <div class="team-card reveal-delay-2">
+      <div class="team-photo" style="background:linear-gradient(135deg,#D4DDE9,#A8B8D5);">📊</div>
+      <div class="team-info">
+        <h3>James Ochieng</h3>
+        <span class="team-role">Monitoring & Evaluation Lead</span>
+        <p class="team-bio">James leads AERT's impact measurement framework, using remote sensing, field surveys, and data analysis to track and report on ecosystem recovery and community outcomes.</p>
+      </div>
+    </div>
+    <div class="team-card reveal-delay-3">
+      <div class="team-photo" style="background:linear-gradient(135deg,#E9E4D4,#D5C4A8);">✉️</div>
+      <div class="team-info">
+        <h3>Naledi Dlamini</h3>
+        <span class="team-role">Communications & Partnerships</span>
+        <p class="team-bio">Naledi manages AERT's external communications, donor relations, and strategic partnerships, telling the story of Africa's ecological transformation to the world.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-banner">
+    <div class="cta-text">
+      <h2>Want to Work With Us?</h2>
+      <p>We're always looking for passionate people and partners to join our mission.</p>
+    </div>
+    <a class="btn-white" href="#" onclick="showPage('contact')">Get in Touch</a>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>Africa Ecological Restoration Trust</h3><p>Restoring Africa's living landscapes — one ecosystem at a time.</p></div>
+      <div class="footer-col"><h4>Navigate</h4><a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('about')">About Us</a><a href="#" onclick="showPage('team')">Our Team</a><a href="#" onclick="showPage('contact')">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:info@aert.org">info@aert.org</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Africa Ecological Restoration Trust.</p></div>
+  </footer>
+</div>
+
+<!-- ════════════════════ CONTACT PAGE ════════════════════ -->
+<div id="contact" class="page">
+  <section class="page-hero" style="padding-bottom:0;">
+    <div class="page-hero-inner">
+      <div class="section-tag">Contact</div>
+      <h1>Let's Restore<br>Together</h1>
+      <p>Whether you're a donor, partner, researcher, or just passionate about Africa's ecosystems — we'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <div class="contact-layout">
+    <div class="contact-left">
+      <h2>Get in Touch</h2>
+      <p>Reach out to us directly or use the form. We respond to all enquiries within 2 business days.</p>
+
+      <div class="contact-detail">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-detail-info">
+          <h4>Email</h4>
+          <p>info@aert.org</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div class="contact-detail-info">
+          <h4>Phone</h4>
+          <p>To be confirmed by AERT</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail-info">
+          <h4>Office</h4>
+          <p>Address to be confirmed by AERT</p>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;padding:32px;background:rgba(200,101,26,0.12);border-radius:16px;border:1px solid rgba(200,101,26,0.2);">
+        <p style="font-size:14px;color:rgba(255,255,255,0.8);line-height:1.7;">
+          <strong style="color:var(--amber);">🤝 Partner with AERT</strong><br>
+          We welcome partnerships with NGOs, governments, research institutions, businesses, and individuals who share our commitment to Africa's ecological future.
+        </p>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <h2>Send Us a Message</h2>
+      <p class="form-sub">Fill in the form below and we'll get back to you as soon as possible.</p>
+
+      <div class="success-msg" id="successMsg">
+        ✅ Thank you! Your message has been sent. We'll be in touch within 2 business days.
+      </div>
+
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your full name" required>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="How can we help you?" required>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about yourself and how you'd like to connect with AERT..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Message →</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand"><h3>Africa Ecological Restoration Trust</h3><p>Restoring Africa's living landscapes — one ecosystem at a time.</p></div>
+      <div class="footer-col"><h4>Navigate</h4><a href="#" onclick="showPage('home')">Home</a><a href="#" onclick="showPage('about')">About Us</a><a href="#" onclick="showPage('team')">Our Team</a><a href="#" onclick="showPage('contact')">Contact</a></div>
+      <div class="footer-col"><h4>Contact</h4><a href="mailto:info@aert.org">info@aert.org</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Africa Ecological Restoration Trust.</p></div>
+  </footer>
+</div>
+
+<script>
+// PAGE NAVIGATION
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(initReveal, 100);
+}
+
+// SCROLL REVEAL
+function initReveal() {
+  const els = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => {
+    el.classList.remove('visible');
+    obs.observe(el);
+  });
+}
+
+// CONTACT FORM
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('successMsg').style.display = 'block';
+  e.target.reset();
+  e.target.style.opacity = '0.4';
+  e.target.style.pointerEvents = 'none';
+  setTimeout(() => {
+    document.getElementById('successMsg').style.display = 'none';
+    e.target.style.opacity = '1';
+    e.target.style.pointerEvents = '';
+  }, 6000);
+}
+
+// COUNTER ANIMATION
+function animateCounters() {
+  document.querySelectorAll('.stat-num').forEach(el => {
+    const text = el.textContent;
+    const num = parseInt(text.replace(/\D/g,''));
+    const suffix = text.replace(/[\d]/g,'');
+    let start = 0;
+    const step = Math.ceil(num / 40);
+    const timer = setInterval(() => {
+      start = Math.min(start + step, num);
+      el.textContent = start + suffix;
+      if (start >= num) clearInterval(timer);
+    }, 40);
+  });
+}
+
+// INIT
+document.addEventListener('DOMContentLoaded', () => {
+  initReveal();
+  setTimeout(animateCounters, 700);
+});
+</script>
+</body>
+</html>
