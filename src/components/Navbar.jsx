@@ -26,8 +26,7 @@ const Navbar = () => {
           }} 
         />
         <div className="logo-text">
-          <strong>AERT</strong>
-          <span>Ecological Trust</span>
+          <strong>Africa Ecological Restoration Trust</strong>
         </div>
       </Link>
       

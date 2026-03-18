@@ -42,9 +42,16 @@
   }
   .logo-icon .arid { background: #C8941A; }
   .logo-icon .lush { background: #2C8C4C; }
-  .logo-text { color: var(--white); }
-  .logo-text strong { font-family: 'Playfair Display', serif; font-size: 18px; display: block; line-height: 1; }
-  .logo-text span { font-size: 10px; letter-spacing: 2px; opacity: 0.7; text-transform: uppercase; }
+  .logo-text {
+    color: var(--white);
+    max-width: 290px;
+  }
+  .logo-text strong {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    display: block;
+    line-height: 1.15;
+  }
 
   .nav-links { display: flex; gap: 36px; list-style: none; }
   .nav-links a {
@@ -503,9 +510,21 @@
     .footer-grid { grid-template-columns: 1fr; gap: 40px; }
     .cta-banner { flex-direction: column; text-align:center; padding: 60px 8vw; }
     .nav-links { display:none; }
+    .logo-text {
+      max-width: 220px;
+    }
+    .logo-text strong {
+      font-size: 13px;
+    }
   }
   @media (max-width: 600px) {
     .team-grid { grid-template-columns: 1fr; }
     .highlights-grid { grid-template-columns: 1fr; }
     .hero-stats { grid-template-columns: 1fr 1fr; }
+    .logo-text {
+      max-width: 180px;
+    }
+    .logo-text strong {
+      font-size: 11px;
+    }
   }
