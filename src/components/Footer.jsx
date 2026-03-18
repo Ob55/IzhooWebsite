@@ -27,7 +27,6 @@ const Footer = () => {
           <Link to="/team">Our Team</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/initiatives">Initiatives</Link>
-          <Link to="/news-media">News & Media</Link>
         </div>
         <div className="footer-col">
           <h4>Contact</h4>

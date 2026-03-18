@@ -32,7 +32,6 @@ const Navbar = () => {
         <li><Link to="/team" className={location.pathname === '/team' ? 'active' : ''}>Our Team</Link></li>
         <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
         <li><Link to="/initiatives" className={location.pathname === '/initiatives' ? 'active' : ''}>Initiatives</Link></li>
-        <li><Link to="/news-media" className={location.pathname === '/news-media' ? 'active' : ''}>News & Media</Link></li>
       </ul>
       <Link to="/contact" className="nav-cta">Get Involved</Link>
     </nav>
