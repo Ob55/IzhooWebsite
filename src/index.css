@@ -27,7 +27,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 5vw;
-    height: 72px;
+    height: 92px;
     background: rgba(27,58,45,0.96);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(200,101,26,0.2);
@@ -44,20 +44,29 @@
   .logo-icon .lush { background: #2C8C4C; }
   .logo-text {
     color: var(--white);
-    max-width: 290px;
+    max-width: 340px;
   }
   .logo-text strong {
     font-family: 'Playfair Display', serif;
-    font-size: 16px;
+    font-size: 18px;
     display: block;
     line-height: 1.15;
   }
+  .logo-text span {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: rgba(255,255,255,0.72);
+  }
 
-  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links { display: flex; gap: 22px; list-style: none; }
   .nav-links a {
-    color: rgba(255,255,255,0.8); text-decoration: none; font-size: 14px;
+    color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px;
     font-weight: 500; letter-spacing: 0.5px; transition: color 0.2s;
     position: relative;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
   .nav-links a::after {
     content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
@@ -124,7 +133,7 @@
     position: relative; z-index: 2;
     width: 100%; max-width: 100%;
     display: grid; grid-template-columns: 1fr 1fr;
-    min-height: calc(100vh - 72px);
+    min-height: calc(100vh - 92px);
   }
   .hero-left {
     padding: 80px 6vw 80px 10vw;
@@ -353,6 +362,11 @@
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
   .footer-brand h3 { font-family:'Playfair Display',serif; font-size:22px; color:white; margin-bottom:12px; }
   .footer-brand p { font-size:14px; line-height:1.7; color:rgba(255,255,255,0.5); }
+  .footer-brand-tagline {
+    color: rgba(255,255,255,0.74);
+    font-size: 13px;
+    line-height: 1.5;
+  }
   .footer-col h4 { font-size:12px; letter-spacing:3px; text-transform:uppercase; color:var(--amber); margin-bottom:20px; }
   .footer-col a { display:block; color:rgba(255,255,255,0.5); text-decoration:none; font-size:14px; margin-bottom:10px; transition:color 0.2s; }
   .footer-col a:hover { color:white; }
@@ -416,17 +430,35 @@
   }
   .team-card:hover { transform: translateY(-6px); box-shadow: 0 16px 50px rgba(0,0,0,0.12); }
   .team-photo {
-    height: 200px; background: var(--sky);
+    height: 320px;
+    background: linear-gradient(135deg, #eef5ef, #d8e6d8);
     display: flex; align-items: center; justify-content: center;
-    font-size: 56px; position: relative; overflow: hidden;
+    position: relative; overflow: hidden;
+  }
+  .team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
   }
   .team-photo::after {
     content: ''; position: absolute; inset: 0;
     background: linear-gradient(to bottom, transparent 50%, rgba(27,58,45,0.08));
   }
+  .team-photo-fallback {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    color: var(--forest);
+    background: linear-gradient(135deg, #eef5ef, #d8e6d8);
+  }
   .team-info { padding: 28px 28px 32px; }
   .team-info h3 { font-family:'Playfair Display',serif; font-size:20px; color:var(--forest); margin-bottom:4px; }
-  .team-role { font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:14px; display:block; }
+  .team-role { font-size:12px; letter-spacing:1.4px; text-transform:uppercase; color:var(--amber); font-weight:600; margin-bottom:14px; display:block; }
   .team-bio { font-size:14px; line-height:1.7; color:var(--bark); }
 
   /* ── CONTACT PAGE ── */
@@ -495,6 +527,9 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
+    nav {
+      height: 86px;
+    }
     .hero-inner { grid-template-columns: 1fr; }
     .hero-right { display:none; }
     .hero-left { padding: 60px 8vw; }
@@ -511,10 +546,13 @@
     .cta-banner { flex-direction: column; text-align:center; padding: 60px 8vw; }
     .nav-links { display:none; }
     .logo-text {
-      max-width: 220px;
+      max-width: 250px;
     }
     .logo-text strong {
-      font-size: 13px;
+      font-size: 14px;
+    }
+    .logo-text span {
+      font-size: 11px;
     }
   }
   @media (max-width: 600px) {
@@ -526,5 +564,8 @@
     }
     .logo-text strong {
       font-size: 11px;
+    }
+    .logo-text span {
+      font-size: 10px;
     }
   }

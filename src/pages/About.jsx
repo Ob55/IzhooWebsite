@@ -23,12 +23,12 @@ const About = () => {
           <div className="reveal-right">
             <div style={{ background: 'var(--sky)', borderRadius: '20px', padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div>
-                <div className="section-tag">Mission</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>To restore degraded ecosystems across Africa through science-based, community-centred ecological restoration and conservation.</p>
+                <div className="section-tag">Vision</div>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>An Africa where thriving, biodiverse ecosystems sustain both wildlife and human communities in harmony.</p>
               </div>
               <div style={{ borderTop: '1px solid rgba(27,58,45,0.15)', paddingTop: '32px' }}>
-                <div className="section-tag">Vision</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>A Africa where thriving, biodiverse ecosystems sustain both wildlife and human communities in harmony.</p>
+                <div className="section-tag">Mission</div>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>To restore degraded ecosystems across Africa through science-based, community-centred ecological restoration and conservation.</p>
               </div>
             </div>
           </div>

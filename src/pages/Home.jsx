@@ -20,14 +20,13 @@ const Home = () => {
             <div className="hero-eyebrow">Africa Ecological Restoration Trust</div>
             <h1 className="hero-title">
               Restoring Africa's<br />
-              <em>Living Landscapes</em>
+              <em>Landscapes</em>
             </h1>
             <p className="hero-tagline">
               We heal degraded ecosystems across Africa — transforming barren land into thriving, biodiverse habitats that sustain communities and wildlife for generations.
             </p>
             <div className="hero-actions">
               <Link className="btn-primary" to="/about">Our Mission ↗</Link>
-              <Link className="btn-outline" to="/contact">Get Involved</Link>
             </div>
           </div>
           <div className="hero-right">

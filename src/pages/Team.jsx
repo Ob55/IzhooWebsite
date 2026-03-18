@@ -1,12 +1,48 @@
 import React from 'react';
 
 const teamMembers = [
-  { name: "Dr. Amara Nkosi", role: "Executive Director", bg: "linear-gradient(135deg, #D4E9DB, #A8D5B5)", emoji: "👩🏾‍🔬", bio: "Amara brings over 15 years of experience in leading large-scale ecological conservation efforts across East Africa." },
-  { name: "Fatima Al-Hassan", role: "Head of Conservation", bg: "linear-gradient(135deg, #E8D8C4, #D4B896)", emoji: "🧕🏾", bio: "With a background in environmental science, Fatima oversees all field projects, ensuring science-based interventions." },
-  { name: "Dr. Kwame Asante", role: "Lead Restoration Scientist", bg: "linear-gradient(135deg, #D4E9DB, #B8D4C0)", emoji: "👨🏿‍🏫", bio: "Kwame works closely with local communities to empower them as primary stewards of their natural environments." },
-  { name: "Aisha Diallo", role: "Community Engagement Manager", bg: "linear-gradient(135deg, #E4D4E9, #C4A8D5)", emoji: "👩🏾‍🌾", bio: "Aisha conducts vital research and provides the scientific foundation for our restoration methodologies and practices." },
-  { name: "James Ochieng", role: "Monitoring & Evaluation Lead", bg: "linear-gradient(135deg, #D4DDE9, #A8B8D5)", emoji: "👨🏿‍💻", bio: "James builds the critical alliances with NGOs, governments, and private sector partners that make our work possible." },
-  { name: "Naledi Dlamini", role: "Communications & Partnerships", bg: "linear-gradient(135deg, #E9E4D4, #D5C4A8)", emoji: "👩🏾‍💼", bio: "Naledi coordinates communications and logistics for all our massive tree-planting campaigns across the continent." }
+  {
+    name: 'Isaiah Oduor',
+    role: 'Director & Founder',
+    photo: '/team/photo-1.jpg',
+    fallback: 'IO',
+    bio: 'Provides strategic direction for AERT and leads the organisation’s long-term restoration vision across Africa.',
+  },
+  {
+    name: 'Velona Oketch',
+    role: 'Director, Operations & Administration',
+    photo: '/team/photo-2.jpg',
+    fallback: 'VO',
+    bio: 'Oversees operations and administration, helping ensure AERT’s programmes and partnerships run smoothly and effectively.',
+  },
+  {
+    name: 'Elizabeth Ooro',
+    role: 'ESG & Impact Lead',
+    photo: '/team/photo-3.jpg',
+    fallback: 'EO',
+    bio: 'Leads environmental, social, and governance impact work, strengthening accountability and meaningful restoration outcomes.',
+  },
+  {
+    name: 'Kalondu Mumo',
+    role: 'Ecology & M&E Lead',
+    photo: '/team/photo-4.jpg',
+    fallback: 'KM',
+    bio: 'Guides ecological planning and monitoring frameworks to keep AERT’s restoration work evidence-based and adaptive.',
+  },
+  {
+    name: 'Leonard Kusule',
+    role: 'Accounts & Finance Lead',
+    photo: '/team/photo-5.jpg',
+    fallback: 'LK',
+    bio: 'Leads financial management and reporting systems that support transparent, sustainable delivery across AERT programmes.',
+  },
+  {
+    name: 'Walter Menya',
+    role: 'Policy Formulation, Communication & Advocacy Lead',
+    photo: '/team/photo-6.jpg',
+    fallback: 'WM',
+    bio: 'Shapes policy, communication, and advocacy efforts that elevate restoration priorities and amplify AERT’s voice.',
+  },
 ];
 
 const Team = () => {
@@ -23,8 +59,18 @@ const Team = () => {
       <section className="team-grid">
         {teamMembers.map((member, i) => (
           <div key={i} className={`team-card reveal reveal-delay-${(i % 3) + 1}`}>
-            <div className="team-photo" style={{ background: member.bg }}>
-              {member.emoji}
+            <div className="team-photo">
+              <img
+                src={member.photo}
+                alt={member.name}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling.style.display = 'grid';
+                }}
+              />
+              <div className="team-photo-fallback">
+                {member.fallback}
+              </div>
             </div>
             <div className="team-info">
               <h3>{member.name}</h3>

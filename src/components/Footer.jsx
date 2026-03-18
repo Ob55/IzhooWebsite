@@ -6,14 +6,17 @@ const Footer = () => {
     <footer>
       <div className="footer-grid">
         <div className="footer-brand">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px', marginBottom: '16px' }}>
             <img 
               src="/logo.png" 
               alt="AERT Logo" 
-              style={{ width: '64px', height: '64px', objectFit: 'contain', background: 'transparent' }}
+              style={{ width: '86px', height: '86px', objectFit: 'contain', background: 'transparent', flexShrink: 0 }}
               onError={(e) => e.target.style.display = 'none'}
             />
-            <h3 style={{ marginBottom: 0 }}>Africa Ecological Restoration Trust</h3>
+            <div>
+              <h3 style={{ marginBottom: '8px' }}>Africa Ecological Restoration Trust</h3>
+              <p className="footer-brand-tagline">Restoring Africa, One Landscape at a Time</p>
+            </div>
           </div>
           <p>Dedicated to restoring and conserving Africa's ecosystems — for wildlife, communities, and future generations.</p>
         </div>
@@ -23,6 +26,8 @@ const Footer = () => {
           <Link to="/about">About Us</Link>
           <Link to="/team">Our Team</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/initiatives">Initiatives</Link>
+          <Link to="/news-media">News & Media</Link>
         </div>
         <div className="footer-col">
           <h4>Contact</h4>

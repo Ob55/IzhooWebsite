@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Team from './pages/Team';
 import Contact from './pages/Contact';
+import Initiatives from './pages/Initiatives';
+import NewsMedia from './pages/NewsMedia';
 
 function App() {
   useReveal();
@@ -19,6 +21,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/initiatives" element={<Initiatives />} />
+        <Route path="/news-media" element={<NewsMedia />} />
       </Routes>
     </Layout>
   );
