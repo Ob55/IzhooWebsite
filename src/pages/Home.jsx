@@ -92,7 +92,7 @@ const Home = () => {
           <div className="section-tag">Who We Are</div>
           <h2 className="section-title">A Trust Built on<br />Nature & Hope</h2>
           <p className="section-body">
-            Africa Ecological Restoration Trust (AERT) is a non-profit Entity dedicated to ecological restoration and conservation across Africa. Founded on the belief that restored landscapes can transform lives, we work at the intersection of science, community, and nature.
+            Africa Ecological Restoration Trust (AERT) is a non-profit entity dedicated to ecological restoration and conservation across Africa. Founded on the belief that restored landscapes can transform lives, we work at the intersection of science, community, and nature.
           </p>
           <Link className="btn-primary" to="/about">Learn More About AERT</Link>
         </div>
