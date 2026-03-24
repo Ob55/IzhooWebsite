@@ -24,11 +24,11 @@ const About = () => {
             <div style={{ background: 'var(--sky)', borderRadius: '20px', padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div>
                 <div className="section-tag">Vision</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>An Africa where thriving, biodiverse ecosystems sustain both wildlife and human communities in harmony.</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>An Africa where degraded lands are restored, native species thrive, and invasive threats are controlled – for wildlife and communities together.</p>
               </div>
               <div style={{ borderTop: '1px solid rgba(27,58,45,0.15)', paddingTop: '32px' }}>
                 <div className="section-tag">Mission</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>To restore degraded ecosystems across Africa through science-based, community-centred ecological restoration and conservation.</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>To design, coordinate, and implement ecological restoration and biodiversity conservation initiatives across Kenya and Africa through science-led, partnership-based approaches.</p>
               </div>
             </div>
           </div>
@@ -56,6 +56,10 @@ const About = () => {
           <div className="value-card">
             <h3>Integrity</h3>
             <p>We operate with transparency, accountability, and honesty — to our donors, partners, communities, and the ecosystems we serve.</p>
+          </div>
+          <div className="value-card">
+            <h3>Patience</h3>
+            <p>Ecosystems recover slowly. We're here for the long haul.</p>
           </div>
         </div>
       </section>

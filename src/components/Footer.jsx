@@ -8,14 +8,14 @@ const Footer = () => {
         <div className="footer-brand">
           <div style={{ display: 'flex', alignItems: 'center', gap: '18px', marginBottom: '16px' }}>
             <img 
-              src="/logo.png" 
+              src="/logo.jpg" 
               alt="AERT Logo" 
               style={{ width: '86px', height: '86px', objectFit: 'contain', background: 'transparent', flexShrink: 0 }}
               onError={(e) => e.target.style.display = 'none'}
             />
             <div>
               <h3 style={{ marginBottom: '8px' }}>Africa Ecological Restoration Trust</h3>
-              <p className="footer-brand-tagline">Restoring Africa, One Landscape at a Time</p>
+              <p className="footer-brand-tagline">Restore Africa. One Landscape at a Time.</p>
             </div>
           </div>
           <p>Dedicated to restoring and conserving Africa's ecosystems — for wildlife, communities, and future generations.</p>

@@ -3,7 +3,7 @@ import React from 'react';
 const teamMembers = [
   {
     name: 'Isaiah Oduor',
-    role: 'Director & Founder',
+    role: 'Founder and Executive Director',
     photo: '/team/photo-1.jpg',
     fallback: 'IO',
     bio: 'Provides strategic direction for AERT and leads the organisation’s long-term restoration vision across Africa.',
