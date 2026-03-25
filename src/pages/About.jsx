@@ -72,7 +72,7 @@ const About = () => {
         <div className="three-col">
           <div className="focus-card reveal reveal-delay-1">
             <div className="focus-icon">🌿</div>
-            <h3>Ecological Restoration</h3>
+            <h3>ECOLOGICAL RESTORATION</h3>
             <p>Rehabilitating degraded land through native planting, soil restoration, and rewilding — returning ecosystems to health and function.</p>
           </div>
           <div className="focus-card reveal reveal-delay-2">
