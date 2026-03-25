@@ -15,7 +15,7 @@ const Footer = () => {
             />
             <div>
               <h3 style={{ marginBottom: '8px' }}>Africa Ecological Restoration Trust</h3>
-              <p className="footer-brand-tagline">Restore Africa. One Landscape at a Time.</p>
+              <p className="footer-brand-tagline">Restoring Africa. One Landscape at a Time.</p>
             </div>
           </div>
           <p>Dedicated to restoring and conserving Africa's ecosystems — for wildlife, communities, and future generations.</p>

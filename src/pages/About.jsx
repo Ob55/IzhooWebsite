@@ -24,7 +24,7 @@ const About = () => {
             <div style={{ background: 'var(--sky)', borderRadius: '20px', padding: '48px', height: '100%', display: 'flex', flexDirection: 'column', gap: '32px' }}>
               <div>
                 <div className="section-tag">Vision</div>
-                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>An Africa where degraded lands are restored, native species thrive, and invasive threats are controlled – for wildlife and communities together.</p>
+                <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', color: 'var(--forest)', lineHeight: 1.5 }}>An Africa where degraded lands are restored, native species thrive, and invasive threats are controlled.</p>
               </div>
               <div style={{ borderTop: '1px solid rgba(27,58,45,0.15)', paddingTop: '32px' }}>
                 <div className="section-tag">Mission</div>
@@ -77,12 +77,12 @@ const About = () => {
           </div>
           <div className="focus-card reveal reveal-delay-2">
             <div className="focus-icon">🦁</div>
-            <h3>Wildlife Conservation</h3>
+            <h3>BIODIVERSITY CONSERVATION</h3>
             <p>Protecting critical habitats and wildlife corridors, supporting biodiversity and the natural processes that sustain life.</p>
           </div>
           <div className="focus-card reveal reveal-delay-3">
             <div className="focus-icon">👥</div>
-            <h3>Community Engagement</h3>
+            <h3>INVASIVE SPECIES MANAGEMENT & CONTROL</h3>
             <p>Building green economies with local communities — creating lasting incentives for conservation through livelihoods and education.</p>
           </div>
         </div>

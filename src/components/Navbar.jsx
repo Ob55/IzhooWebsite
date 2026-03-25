@@ -23,7 +23,7 @@ const Navbar = () => {
         />
         <div className="logo-text">
           <strong>Africa Ecological Restoration Trust</strong>
-          <span>Restore Africa. One Landscape at a Time.</span>
+          <span>Restoring Africa. One Landscape at a Time.</span>
         </div>
       </Link>
 

@@ -34,12 +34,11 @@ const Home = () => {
         <div className="hero-inner">
           <div className="hero-left">
             <div className="hero-eyebrow">Africa Ecological Restoration Trust</div>
-            <h1 className="hero-title">
-              Restoring Degraded Land Through<br />
-              <em>Community-Led Solutions</em>
+            <h1 className="hero-title" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', lineHeight: '1.2' }}>
+              Restoring Degraded Land, Conserving Biodiversity, and Managing Invasive Species — Through Community-Led and Science based Solutions
             </h1>
             <p className="hero-tagline">
-              We support communities to restore degraded land using practical, scalable solutions that improve livelihoods and environmental outcomes.
+              We support communities to heal landscapes, restore native species, and manage invasives — using practical, scalable solutions that improve livelihoods and environmental outcomes.
             </p>
             <div className="hero-actions">
               <Link className="btn-primary" to="/contact">Partner With Us ↗</Link>
@@ -117,7 +116,7 @@ const Home = () => {
         <div className="highlights-grid">
           <div className="highlight-card reveal reveal-delay-1">
             <div className="highlight-icon">🌱</div>
-            <h3>Restore</h3>
+            <h3>Restoring</h3>
             <p>We rehabilitate degraded ecosystems, bringing life back to lands scarred by deforestation, drought, and overuse.</p>
           </div>
           <div className="highlight-card reveal reveal-delay-2">
@@ -146,7 +145,7 @@ const Home = () => {
           <div className="vision-impact-grid">
             <div className="vision-card">
               <div className="vision-card-label">Our Vision</div>
-              <p>An Africa where degraded lands are restored, native species thrive, and invasive threats are controlled – for wildlife and communities together.</p>
+              <p>An Africa where degraded lands are restored, native species thrive, and invasive threats are controlled.</p>
             </div>
             <div className="vision-card mission-card">
               <div className="vision-card-label">Our Mission</div>
