@@ -72,17 +72,17 @@ const About = () => {
         <div className="three-col">
           <div className="focus-card reveal reveal-delay-1">
             <div className="focus-icon">🌿</div>
-            <h3>ECOLOGICAL RESTORATION</h3>
+            <h3>Ecological Restoration</h3>
             <p>Rehabilitating degraded land through native planting, soil restoration, and rewilding — returning ecosystems to health and function.</p>
           </div>
           <div className="focus-card reveal reveal-delay-2">
             <div className="focus-icon">🦁</div>
-            <h3>BIODIVERSITY CONSERVATION</h3>
+            <h3>Biodiversity Conservation</h3>
             <p>Protecting critical habitats and wildlife corridors, supporting biodiversity and the natural processes that sustain life.</p>
           </div>
           <div className="focus-card reveal reveal-delay-3">
             <div className="focus-icon">👥</div>
-            <h3>INVASIVE SPECIES MANAGEMENT & CONTROL</h3>
+            <h3>Invasive Species Management & Control</h3>
             <p>Building green economies with local communities — creating lasting incentives for conservation through livelihoods and education.</p>
           </div>
         </div>
